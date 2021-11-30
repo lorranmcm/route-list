@@ -1,0 +1,28 @@
+.btn-ghost {
+  color: #4A4A4A;
+  border: 2px solid #000000;
+  padding: 8px 24px;
+  border-radius: 10px;
+  font-weight: bold;
+  opacity: 0.6;
+  transition: opacity 0.3s ease;
+  margin-left: 20px;
+}
+
+.btn-ghost:hover {
+  opacity: 1;
+}
+
+.btn-flat {
+  color: #FFC300;
+  font-weight: bold;
+  background-color: #001D3D;
+  padding: 8px 24px;
+  border-radius: 4px;
+  transition: background 0.3s ease;
+}
+
+.btn-flat:hover {
+  background: #1BCB7F;
+  color: white;
+}
