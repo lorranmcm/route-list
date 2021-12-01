@@ -1,19 +1,15 @@
-<div>
-  <div class="container">
-    <div class="row justify-content-between">
-      <h1 class="project-title">Projects</h1>
-      <%= render "create_form" %>
-    </div>
+<div class="container">
+  <div class="row justify-content-between">
+    <h1 class="project-title">Projects</h1>
+    <%= render "create_form" %>
   </div>
 
-  <div class="container">
-    <div class="cards">
-      <% @projects.each do |project|%>
-        <%= link_to tasks_path, class:"card-category" do%>
-            <h3><%= project.title %></h3>
-            <p><%= pluralize project.tasks.length, "task" %></p>
-        <% end %>
+  <div class="cards">
+    <% @projects.each do |project|%>
+      <%= link_to tasks_path, class:"card-category-yellow" do%>
+          <h3><%= project.title %></h3>
+          <p><%= pluralize project.tasks.length, "task" %></p>
       <% end %>
-    </div>
+    <% end %>
   </div>
 </div>
