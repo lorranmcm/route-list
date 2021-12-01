@@ -2,6 +2,8 @@
 @import "alert";
 @import "avatar";
 @import "navbar";
+@import "button";
+@import "card";
 @import "index_tasks_cards";
 @import "index_tasks_button";
 @import "home_banner";
@@ -9,3 +11,12 @@
 @import "home_cards";
 @import "home_contact";
 @import "index_projects_cards";
+
+.project-title {
+  color: #FFC300;
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 64px;
+  line-height: 96px;
+}
