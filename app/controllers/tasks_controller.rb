@@ -28,11 +28,11 @@ class TasksController < ApplicationController
 
     @project.tasks.each do |t|
       if t != @task && t.order <= @task.order
-      t.order -= 1
-      t.save!
+        t.order -= 1
+        t.save!
       end
+      @task.save
     end
-    @task.save
   end
 
   def update

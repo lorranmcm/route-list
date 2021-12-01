@@ -1,2 +1,63 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<!---BANNER -->
+<div class="banner">
+    <h1>Get it done on-the-go</h1>
+    <p>Manage your companies’ errands in real time.</p>
+    <!---SIGN UP BUTTON -->
+      <div class="btn btn-sign-up">
+        <%= link_to new_user_registration_path(:query => "sign-up"), class:"button-link" do%>
+        Sign Up
+        <%end%>
+      </div>
+</div>
+
+<!---HOW IT WORKS -> flex box-->
+<section>
+
+  <div class="container">
+
+    <h1 class="how-it-works text-center">How it works</h1>
+
+    <div class="row">
+      <div class="card-category col" id="card-one" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/breakfast.jpg)"></div>
+      <div class="col">
+        <h2>How it works</h2>
+        <p>jshbfalksjbfökadsbg</p>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col">
+        <h2 class="text-right">How it works</h2>
+        <p class="text-right">jshbfalksjbfökadsbg</p>
+      </div>
+      <div class="card-category col" id="card-two" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/breakfast.jpg)"></div>
+    </div>
+
+    <div class="row">
+      <div class="card-category col" id="card-three" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/breakfast.jpg)"></div>
+      <div class="col">
+        <h2>How it works</h2>
+        <p>jshbfalksjbfökadsbg</p>
+      </div>
+    </div>
+
+  </div>
+
+</section>
+
+<!---SUBMIT CONTACT FORM-->
+
+<section class="primary-background">
+
+  <div class="container">
+    <h1 class="how-it-works text-center">Contact</h1>
+
+    <div class="row">
+      <div class="card-category col" id="card-one" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/breakfast.jpg)"></div>
+      <div class="col">
+        <h2>How it works</h2>
+        <p>jshbfalksjbfökadsbg</p>
+      </div>
+    </div>
+  </div>
+</section>
