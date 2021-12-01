@@ -11,6 +11,9 @@
           <%= f.input :password,
                       required: false,
                       input_html: { autocomplete: "current-password", class: "login-input" } %>
+
+          <%= render "devise/shared/forgot_password" %>
+
           <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
         </div>
 
