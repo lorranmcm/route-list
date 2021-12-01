@@ -15,6 +15,13 @@
 @import "pages/index";
 
 body {
+  font-family: Poppins;
+}
+
+.light-background {
  background-color: #F6F2EA;
- font-family: Poppins;
+}
+
+.dark-background {
+ background-color: #001D3D;
 }

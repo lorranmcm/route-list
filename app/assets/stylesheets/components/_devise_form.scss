@@ -1,0 +1,79 @@
+.btn-login {
+  background-color: #FFC300;
+  color: #001D3D;
+  font-weight: bold;
+  border-radius: 10px;
+  width: 136px;
+}
+
+.form-container {
+  background-color: #F6F2EA;
+  border-radius: 12px;
+  border: 1px #001D3D solid;
+  margin: auto;
+  padding: 50px;
+}
+
+.box-center {
+  height: 80vh;
+}
+
+.login-input {
+  border-radius: 4px;
+  color: #A7A7A7;
+}
+
+.login-input:focus {
+  border: 1px #001D3D solid;
+  box-shadow: none;
+  color: #001D3D;
+}
+
+.login-input:focus + .email {
+  color: #001D3D;
+}
+
+.email {
+  text-align: center;
+  color: #A7A7A7;
+}
+
+.password {
+  text-align: center;
+  color: #A7A7A7;
+}
+
+.login-button {
+  color: #001D3D;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.login-button:hover {
+  text-decoration: none;
+  color: #FFC300;
+}
+
+.header-password {
+  text-align: center;
+  font-size: 24px;
+  color: #001D3D;
+}
+
+.forgot-password {
+  text-align: center;
+  color: #E71D36;
+}
+
+.forgot-password:hover {
+  text-decoration: none;
+  color: #E71D36;
+}
+
+.btn-password:hover {
+  color: #E71D36;
+}
+
+.account-reminder {
+  color: #A7A7A7;
+}
