@@ -1,4 +1,4 @@
 class Project < ApplicationRecord
   belongs_to :user
-  has_many :tasks, :order => 'order ASC'
+  has_many :tasks
 end
