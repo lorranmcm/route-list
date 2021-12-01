@@ -11,7 +11,7 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload', defer: true %>
   </head>
 
-  <body>
+  <body <%= current_user ? "class=light-background" : "class=dark-background"%>>
     <%= render 'shared/navbar' %>
     <%= render 'shared/flashes' %>
 

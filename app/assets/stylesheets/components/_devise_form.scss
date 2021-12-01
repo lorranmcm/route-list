@@ -61,13 +61,15 @@
 }
 
 .forgot-password {
-  text-align: center;
   color: #E71D36;
-}
+  display: block;
+  text-align: center;
+
 
 .forgot-password:hover {
   text-decoration: none;
   color: #E71D36;
+  opacity: 0.7;
 }
 
 .btn-password:hover {
