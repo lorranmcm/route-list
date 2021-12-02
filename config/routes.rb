@@ -3,9 +3,11 @@ Rails.application.routes.draw do
   root to: 'pages#home'
   get '/projects' => "projects#index", :as => :user_root
 
+  patch '/projects/:project_id/tasks/:id', to: 'tasks#update', as: :task_update
+  
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 
-  resources :projects, only: [:index, :create, :update] do
-    resources :tasks, only: [:create, :show, :index, :update]
+  resources :projects, only: [:index, :create, :update, :destroy] do
+    resources :tasks, only: [:create, :show, :index]
   end
 end
