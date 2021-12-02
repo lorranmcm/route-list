@@ -16,16 +16,21 @@ class TasksController < ApplicationController
     end
   end
 
+  def createform
+    @task = Task.new
+    respond_to do |format|
+      format.html { render partial: 'create.html', locals: { project: @project } }
+      format.text { render partial: 'create.html', locals: { project: @project } }
+    end
+  end
+
   def create
     @project = Project.find(params[:project_id])
     @task = Task.new
-    # authorize @task
     @task.user_id = current_user.id
     @task.project = @project
     @task.status = false
-    @task.description = params[:description]
-    @task.address = params[:address]
-    @task.order = params[:order]
+    authorize @task
 
     @project.tasks.each do |t|
       if t != @task && t.order <= @task.order
@@ -33,7 +38,15 @@ class TasksController < ApplicationController
         t.save!
       end
       @task.save
+
+    respond_to do |format|
+      format.json { render partial: 'show.html', locals: { project: @project, task: @task } }
+      format.html { render partial: 'show.html', locals: { project: @project, task: @task } } # Follow regular flow of Rails
+      format.text { render partial: 'show.html', locals: { project: @project, task: @task } }
     end
+  end
+
+
   end
 
   def update
@@ -41,9 +54,9 @@ class TasksController < ApplicationController
     authorize @task
     @task.update(task_params)
     respond_to do |format|
-    format.json { render partial: 'show.html', locals: { project: @project, task: @task } }
-    format.html { render partial: 'show.html', locals: { project: @project, task: @task } } # Follow regular flow of Rails
-    format.text { render partial: 'show.html', locals: { project: @project, task: @task } }
+      format.json { render partial: 'show.html', locals: { project: @project, task: @task } }
+      format.html { render partial: 'show.html', locals: { project: @project, task: @task } } # Follow regular flow of Rails
+      format.text { render partial: 'show.html', locals: { project: @project, task: @task } }
     end
   end
 

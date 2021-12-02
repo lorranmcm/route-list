@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   devise_for :users
   root to: 'pages#home'
   patch '/projects/:project_id/tasks/:id', to: 'tasks#update', as: :task_update
+  get '/projects/:project_id/tasks/', to: 'tasks#createform', as: :create_form
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 
   resources :projects, only: [:index, :create, :update] do

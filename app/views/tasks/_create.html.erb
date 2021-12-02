@@ -1,0 +1,10 @@
+<div class="whitebck" >
+  <div class="adress_form" data-controller="create-task" data-project-id=<%=@project.id%>>
+    <%= simple_form_for @task, wrapper: :inline_form, html: { class: 'form-inline' } do |f| %>
+      <%= f.input :title,label: false, placeholder: "Title", class:"create-task-input form-inline" %>
+      <%= f.input :address,label: false, placeholder: "Address", class:"create-task-input form-inline" %>
+      <%= f.input :description,label: false, placeholder: "Description", class:"create-task-input form-inline" %>
+      <%= f.button :submit, "Create new task", data: { action: "click->create-task#newtask", create_task_target:"buttonnew" }, class:"btn-warning" %>
+    <% end %>
+  </div>
+ </div>

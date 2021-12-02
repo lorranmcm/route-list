@@ -1,7 +1,7 @@
 <h1>Project name</h1>
 
 <!-- Container -->
-<div class="container" data-controller="index" data-project=<%=@project.id%>>
+<div class="container" data-controller="index create-task" data-project=<%=@project.id%>>
   <div class="row">
     <!-- Column 1: Task list card -->
     <div class="col-sm-4">
@@ -14,7 +14,7 @@
         </div>
       <%end%>
       <!-- Create new Task buttons (2) -->
-      <a class="btn btn-flat" href="#">Create New Task</a>
+      <a class="btn btn-flat" data-action="click->create-task#opennewtaskform">Create New Task</a>
     </div>
     <!-- Column 2: Task description -->
     <div class="col-sm-4">

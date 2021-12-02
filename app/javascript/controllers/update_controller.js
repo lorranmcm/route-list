@@ -25,11 +25,13 @@ export default class extends Controller {
       .then(response => response.text())
       .then((data) => {
         this.buttonTarget.classList.replace("btn-warning", "btn-success");
+        this.buttonTarget.value = "Saved!";
     })
   }
 
   editmode(){
     this.buttonTarget.classList.replace("btn-success", "btn-warning");
+    this.buttonTarget.value = "Save";
   }
 }
 
