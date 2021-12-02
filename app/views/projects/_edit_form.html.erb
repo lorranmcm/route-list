@@ -1,0 +1,6 @@
+<%= simple_form_for @project do |f| %>
+  <%= f.input :title, label: false, value: @project.title, wrapper_html: { data: { project_card_target: "titleInput", action: "click->project-card#preventDefault" } } %>
+  <%= button_tag(type: 'submit', class: "fas fa-save") do %>
+    <i data-action="click->project-card#preventDefault click->project-card#saveCard"> </i>
+  <% end %>
+<% end %>

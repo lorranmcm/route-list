@@ -1,14 +1,45 @@
+<!-- TITLE AND CREATE FORM -->
 <div class="container">
   <div class="row justify-content-between">
     <h1 class="project-title">Projects</h1>
     <%= render "create_form" %>
   </div>
-
+<!-- SEARCH FORM -->
+  <%= form_tag projects_path, method: :get do %>
+  <div id="search-bar" class="my-5 input-group">
+    <%= text_field_tag :query,
+      params[:query],
+      class: "form-control",
+      placeholder: "Find a tour"
+    %>
+    <%= submit_tag "Search", class: "btn btn-secondary" %>
+  </div>
+<% end %>
+<!-- CARDS -->
   <div class="cards">
     <% @projects.each do |project|%>
-      <%= link_to tasks_path, class:"card-category-yellow" do%>
-          <h3><%= project.title %></h3>
-          <p><%= pluralize project.tasks.length, "task" %></p>
+      <%= link_to tasks_path, class:"card-category-yellow", data: { controller: 'project-card' } do%>
+        <div data-project-card-target="view" class="js-project-view">
+          <h3 data-project-card-target="projectTitle"><%= project.title %></h3>
+          <div class="d-flex justify-content-between">
+            <p><%= pluralize project.tasks.length, "task" %></p>
+            <div class="links">
+              <i class="fas fa-pencil-alt" data-action="click->project-card#preventDefault click->project-card#editCard"></i>
+              <i class="fas fa-trash-alt"></i>
+            </div>
+          </div>
+        </div>
+        <div data-project-card-target="edit" class="js-project-edit">
+          <%#= render "edit_form" %>
+          <input type="text" value="<%= project.title %>" data-project-id="<%= project.id %>" data-project-card-target="titleInput" data-action="click->project-card#preventDefault">
+          <div class="d-flex justify-content-between">
+            <p><%= pluralize project.tasks.length, "task" %></p>
+            <div class="links">
+              <i class="fas fa-save" data-action="click->project-card#preventDefault click->project-card#saveCard"></i>
+              <i class="fas fa-trash-alt"></i>
+            </div>
+          </div>
+        </div>
       <% end %>
     <% end %>
   </div>
