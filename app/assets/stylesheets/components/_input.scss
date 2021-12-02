@@ -1,0 +1,11 @@
+input[type="text"]{
+        border: none;
+        background: transparent;
+        color: #000;
+        height:10em;
+        text-align: right;
+    }
+
+input[type="text"]::-moz-placeholder {
+        text-align: center;
+    }

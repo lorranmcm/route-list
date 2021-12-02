@@ -1,5 +1,6 @@
 class TasksController < ApplicationController
   before_action :set_project
+
   def index
     @tasks = Task.all
     @tasks = policy_scope(Task).order(created_at: :desc)
@@ -11,7 +12,7 @@ class TasksController < ApplicationController
 
     respond_to do |format|
       format.html # Follow regular flow of Rails
-      format.text { render partial: 'show.html', locals: { task: @task } }
+      format.text { render partial: 'show.html', locals: { project: @project, task: @task } }
     end
   end
 
@@ -37,12 +38,22 @@ class TasksController < ApplicationController
 
   def update
     @task = Task.find(params[:id])
+    authorize @task
     @task.update(task_params)
+    respond_to do |format|
+    format.json { render partial: 'show.html', locals: { project: @project, task: @task } }
+    format.html { render partial: 'show.html', locals: { project: @project, task: @task } } # Follow regular flow of Rails
+    format.text { render partial: 'show.html', locals: { project: @project, task: @task } }
+    end
   end
 
   private
 
   def set_project
     @project = Project.find(params[:project_id])
+  end
+
+  def task_params
+    params.require(:task).permit(:title, :description, :address)
   end
 end
