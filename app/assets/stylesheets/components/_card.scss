@@ -12,6 +12,21 @@
   padding: 30px;
   border-radius: 10px;
 }
+
+.js-project-edit {
+  display: none;
+}
+
+.is-editing {
+  .js-project-view {
+    display: none;
+  }
+
+  .js-project-edit {
+    display: block;
+  }
+}
+
 .card-category-yellow p {
   padding-top: 25px;
 }
@@ -20,6 +35,11 @@
   background-color: #001D3D;
   color: white;
   text-decoration: none;
+}
+
+.links i {
+  padding-top: 30px;
+  margin-left: 15px;
 }
 
 .card-category {

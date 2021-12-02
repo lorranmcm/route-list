@@ -1,0 +1,80 @@
+<% if false %>
+  <%= simple_form_for(project,
+                      data: {
+                        project_id: project.id,
+                        project_card_target: "form inputTarget",
+                        action: "submit->project-card#saveCard"
+                      }) do |f| %>
+    <%= f.input :title, label: false, value: project.title, wrapper_html: { data: { project_card_target: "titleInput" } } %>
+    <%= button_tag(type: 'submit', class: "fas fa-save",
+                    data: {
+                      # action: "click->project-card#submitSaveForm"
+                    }) do %>
+      <i></i>
+    <% end %>
+  <% end %>
+<% end %>
+
+
+<div class="edit_form" data-controller="new_edit">
+  <%= simple_form_for(project, remote: true,data: {target: "new_edit.form", id: project.id }) do |f| %>
+    <%= f.input :title, label: false, input_html: { data: {target: 'new_edit.title'} }, required: true  %>
+    <%= f.button :submit, "update", data: { action: "click->new_edit#refresh" } %>
+  <% end %>
+  <div data-target="new_edit.display_title"></div>
+</div>
+
+
+
+
+ <%#=  // app/javascript/controllers/projects_controller.js
+
+import { Controller } from "stimulus";
+import { fetchWithToken } from "../utils/fetch_with_token";
+
+export default class extends Controller {
+	static targets = ["form", "line1", "display_address"]
+
+  refresh() {
+  	let id = event.target.form.dataset.id;
+	  fetchWithToken(`/me/${id}`, {
+	    method: "PATCH",
+	    headers: {
+	      "Accept": "application/json",
+	      "Content-Type": "application/json"
+	    },
+	    body: JSON.stringify({
+	    	user: {
+	    		line1: this.line1
+	    	}
+	    })
+	  }).then(response => response.json())
+	    .then((data) => {
+	      console.log(data)
+	    });
+
+  	if (this.line1 != "") {
+    	this.display_addressTarget.innerText = `Mon adresse actuelle : ${this.line1}`;
+    }
+  }
+
+  get line1 () {
+  	return this.line1Target.value
+  }
+}
+
+
+// app/javascript/utils/fetch_with_token.js
+
+import { csrfToken } from "@rails/ujs";
+
+const fetchWithToken = (url, options) => {
+  options.headers = {
+    "X-CSRF-Token": csrfToken()
+  };
+
+  return fetch(url, options);
+}
+
+export { fetchWithToken };
+%>
