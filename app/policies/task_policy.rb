@@ -3,6 +3,7 @@ class TaskPolicy < ApplicationPolicy
     def resolve
       scope.all
     end
+  end
 
     def create?
       true
@@ -12,8 +13,11 @@ class TaskPolicy < ApplicationPolicy
       true
     end
 
+    def update?
+      true
+    end
+
     def index?
       true
     end
-  end
 end
