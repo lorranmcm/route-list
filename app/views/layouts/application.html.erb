@@ -12,10 +12,14 @@
   </head>
 
   <body <%= current_user ? "class=light-background" : "class=dark-background"%>>
+
     <%= render 'shared/navbar' %>
-    <%= render 'shared/flashes' %>
+
 
     <%= yield %>
+
+
+    <%= render 'shared/flashes' %>
 
     <!---  Footer --->
 
