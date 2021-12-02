@@ -1,6 +1,10 @@
 .navbar-lewagon {
   justify-content: space-between;
   padding: 8px 40px;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 5;
 }
 
 .navbar-lewagon .navbar-collapse {
@@ -16,12 +20,10 @@
   a {
     margin: 0 10px;
     text-decoration: none;
-    color: #001D3D;
     font-weight: bold;
   }
 
   a:hover {
-    color: #001D3D;
     opacity: 0.7;
   }
 }
@@ -55,4 +57,5 @@
   color: white;
   font-weight: bold;
   border-radius: 10px;
+  margin-left: 20px;
 }
