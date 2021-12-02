@@ -19,7 +19,11 @@
 <div class="edit_form" data-controller="new_edit">
   <%= simple_form_for(project, remote: true,data: {target: "new_edit.form", id: project.id }) do |f| %>
     <%= f.input :title, label: false, input_html: { data: {target: 'new_edit.title'} }, required: true  %>
-    <%= f.button :submit, "update", data: { action: "click->new_edit#refresh" } %>
+    <%= button_tag(type: 'submit', class: "fas fa-save",
+                  data: {
+                    action: "click->new_edit#refresh" }) do %>
+                      <i></i>
+                    <% end %>
   <% end %>
   <div data-target="new_edit.display_title"></div>
 </div>
