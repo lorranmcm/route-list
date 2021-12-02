@@ -4,8 +4,7 @@ Rails.application.routes.draw do
   patch '/projects/:project_id/tasks/:id', to: 'tasks#update', as: :task_update
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 
-  resources :projects, only: [:index, :create, :update] do
+  resources :projects, only: [:index, :create, :update, :destroy] do
     resources :tasks, only: [:create, :show, :index]
-
   end
 end

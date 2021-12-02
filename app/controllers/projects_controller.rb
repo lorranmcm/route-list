@@ -1,5 +1,5 @@
 class ProjectsController < ApplicationController
-  before_action :find_project, only: [:edit, :update]
+  before_action :find_project, only: [:edit, :update, :destroy]
 
   def index
     if params[:query].present?
@@ -31,6 +31,12 @@ class ProjectsController < ApplicationController
         format.json # Follow the classic Rails flow and look for a create.json view
       end
     end
+  end
+
+  def destroy
+    @project.destroy
+    authorize @project
+    redirect_to projects_path
   end
 
   private
