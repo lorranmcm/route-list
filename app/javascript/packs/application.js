@@ -33,33 +33,4 @@ document.addEventListener('turbolinks:load', () => {
   // initSelect2();
 });
 
-function initProjectList($container) {
-  // if ($container === null) {
-  //   return;
-  // }
-
-  // $container.querySelector('.js-project-card').addEventListener('click', (e) => {
-  //   e.stopPropagation();
-  // });
-  // const $projectView = $container.querySelector('.js-project-view');
-  // const $projectEdit = $container.querySelector('.js-project-edit');
-  // const $actionEdit = $container.querySelector('.js-project-action-edit');
-  // const $actionSave = $container.querySelector('.js-project-action-save');
-
-  // $actionEdit.addEventListener('click', (e) => {
-  //   e.stopPropagation();
-  //   console.log('mouseover');
-  //   // $projectView.style.display = 'none';
-  //   // $projectEdit.style.display = 'block';
-  // });
-
-  // $actionSave.addEventListener('click', (e) => {
-  //   e.stopPropagation();
-  //   $projectEdit.style.display = 'none';
-  //   $projectView.style.display = 'block';
-  // });
-
-  // console.log(projectView);
-}
-
 import "controllers"

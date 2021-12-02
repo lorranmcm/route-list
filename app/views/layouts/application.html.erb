@@ -11,10 +11,26 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload', defer: true %>
   </head>
 
-  <body>
+  <body <%= current_user ? "class=light-background" : "class=dark-background"%>>
     <%= render 'shared/navbar' %>
     <%= render 'shared/flashes' %>
 
     <%= yield %>
+
+    <!---  Footer --->
+
+    <div class="footer darker-background">
+      <div class="footer-links">
+        <a href="#"><i class="fab fa-github"></i></a>
+        <a href="#"><i class="fab fa-instagram"></i></a>
+        <a href="#"><i class="fab fa-facebook"></i></a>
+        <a href="#"><i class="fab fa-twitter"></i></a>
+        <a href="#"><i class="fab fa-linkedin"></i></a>
+      </div>
+      <div class="footer-copyright">
+        This footer is made with <i class="fas fa-heart"></i> at Le Wagon
+      </div>
+    </div>
+
   </body>
 </html>

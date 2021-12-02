@@ -1,5 +1,6 @@
 class ProjectsController < ApplicationController
   before_action :find_project, only: [:edit, :update]
+
   def index
     if params[:query].present?
       @projects = policy_scope(Project).search_by_title(params[:query])
@@ -40,5 +41,9 @@ class ProjectsController < ApplicationController
 
   def project_params
     params.require(:project).permit(:title)
+    
+  def set_project
+    @project = Project.find(params[:id])
+
   end
 end
