@@ -18,29 +18,31 @@
 <!-- CARDS -->
   <div class="cards">
     <% @projects.each do |project|%>
-      <%= link_to tasks_path, class:"card-category-yellow", data: { controller: 'project-card' } do%>
-        <div data-project-card-target="view" class="js-project-view">
-          <h3 data-project-card-target="projectTitle"><%= project.title %></h3>
-          <div class="d-flex justify-content-between">
-            <p><%= pluralize project.tasks.length, "task" %></p>
-            <div class="links">
-              <i class="fas fa-pencil-alt" data-action="click->project-card#preventDefault click->project-card#editCard"></i>
-              <i class="fas fa-trash-alt"></i>
+      <%#= link_to tasks_path, class:"card-category-yellow", data: { controller: 'project-card' } do%>
+        <div class="card-category-yellow" data-controller="project-card">
+          <div data-project-card-target="view" class="js-project-view">
+            <h3 data-project-card-target="projectTitle"><%= project.title %></h3>
+            <div class="d-flex justify-content-between">
+              <p><%= pluralize project.tasks.length, "task" %></p>
+              <div class="links">
+                <i class="fas fa-pencil-alt" data-action="click->project-card#preventDefault click->project-card#editCard"></i>
+                <i class="fas fa-trash-alt"></i>
+              </div>
+            </div>
+          </div>
+          <div data-project-card-target="edit" class="js-project-edit">
+            <%= render "edit_form", project: project %>
+            <!--input type="text" value="<%= project.title %>" data-project-id="<%= project.id %>" data-project-card-target="titleInput" data-action="click->project-card#preventDefault"-->
+            <div class="d-flex justify-content-between">
+              <p><%= pluralize project.tasks.length, "task" %></p>
+              <div class="links">
+                <!--i class="fas fa-save" data-action="click->project-card#preventDefault click->project-card#saveCard"></i-->
+                <i class="fas fa-trash-alt"></i>
+              </div>
             </div>
           </div>
         </div>
-        <div data-project-card-target="edit" class="js-project-edit">
-          <%#= render "edit_form" %>
-          <input type="text" value="<%= project.title %>" data-project-id="<%= project.id %>" data-project-card-target="titleInput" data-action="click->project-card#preventDefault">
-          <div class="d-flex justify-content-between">
-            <p><%= pluralize project.tasks.length, "task" %></p>
-            <div class="links">
-              <i class="fas fa-save" data-action="click->project-card#preventDefault click->project-card#saveCard"></i>
-              <i class="fas fa-trash-alt"></i>
-            </div>
-          </div>
-        </div>
-      <% end %>
+      <%# end %>
     <% end %>
   </div>
 </div>

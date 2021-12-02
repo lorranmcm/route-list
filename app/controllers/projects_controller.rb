@@ -19,7 +19,7 @@ class ProjectsController < ApplicationController
   end
 
   def update
-    binding.pry
+    @project.update(project_params)
     respond_to do |format|
       authorize @project
       if @project.save

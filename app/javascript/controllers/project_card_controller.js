@@ -2,12 +2,13 @@ import { Controller } from "stimulus";
 import { csrfToken } from "@rails/ujs";
 
 export default class extends Controller {
-  static targets = ["view", "edit", "titleInput", "projectTitle"];
+  static targets = ["view", "edit", "titleInput", "projectTitle", "form"];
 
   connect() {
-    document.addEventListener("turbolinks:before-visit", (e) => {
-      this.saveCard();
-    }, { once: true });
+    console.log(this.element)
+    // document.addEventListener("turbolinks:before-visit", (e) => {
+    //   this.saveCard();
+    // }, { once: true });
   }
 
   editCard(e) {
@@ -15,11 +16,26 @@ export default class extends Controller {
     this.titleInputTarget.focus();
   }
 
+  submitSaveForm(e) {
+    // e.preventDefault();
+  }
+
+  onFormSubmit(e) {
+    e.preventDefault();
+
+    const formData = new FormData(this.formTarget);
+    console.log(this.formTarget, formData.get('project'));
+    console.log('wat');
+  }
+
   saveCard(e) {
+    e.preventDefault();
+    // e.preventDefault();
+    // console.log(e);
     fetch(`/projects/${this.titleInputTarget.dataset.projectId}`, {
       method: 'PATCH',
       headers: { 'Accept': "application/json", 'X-CSRF-Token': csrfToken() },
-      body: new FormData(this.titleInputTarget.titleInputTarget.value)
+      body: new FormData(this.formTarget)
     })
       .then(response => response.json())
       .then((data) => {
