@@ -8,6 +8,6 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 
   resources :projects, only: [:index, :create, :update, :destroy] do
-    resources :tasks, only: [:show, :create, :index]
+    resources :tasks, only: [:show, :create, :index, :destroy]
   end
 end
