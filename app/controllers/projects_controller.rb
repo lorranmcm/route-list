@@ -24,7 +24,7 @@ class ProjectsController < ApplicationController
     respond_to do |format|
       authorize @project
       if @project.save
-        format.text { redirect_to projects_path(@project) }
+        format.html { redirect_to projects_path(@project) }
         format.json # Follow the classic Rails flow and look for a create.json view
       else
         format.html { render 'projects/show' }
