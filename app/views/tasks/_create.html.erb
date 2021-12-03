@@ -1,0 +1,12 @@
+<div class="whitebck" >
+  <h1>New task</h1>
+
+  <div data-controller="create-task" data-project-id=<%=@project.id%> data-user-id=<%=current_user.id%>>
+    <%= simple_form_for([@project, @task], remote: true, data: { target: "create-task.form" }) do |f| %>
+      <%= f.input :title,label: false, placeholder: "Title", class:"create-task-input form-inline" %>
+      <%= f.input :address,label: false, placeholder: "Address", class:"create-task-input form-inline" %>
+      <%= f.input :description,label: false, placeholder: "Description", data: {create_task_target:'create-task.description'}, class:"create-task-input form-inline" %>
+      <%= f.button :submit, "Create new task", data: { action: "click->create-task#newtask", create_task_target:"buttoncreate" }, class:"btn-warning" %>
+    <% end %>
+  </div>
+ </div>

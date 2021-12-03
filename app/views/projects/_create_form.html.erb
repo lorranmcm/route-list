@@ -1,4 +1,4 @@
 <%= simple_form_for @project, wrapper: :inline_form, html: { class: 'form-inline' } do |f| %>
-  <%= f.input :title,label: false, placeholder: "Name of the project", class:"create-project-input form-inline" %>
+  <%= f.input :title, label: "false", placeholder: "Name of the project", class:"create-project-input form-inline" %>
   <%= f.button :submit, "Create new project", class:"create-project"%>
 <% end %>

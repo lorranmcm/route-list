@@ -23,16 +23,23 @@ class TasksController < ApplicationController
     end
   end
 
-  def create
-    @project = Project.find(params[:project_id])
+  def new
     @task = Task.new
-    # authorize @task
-    @task.user_id = current_user.id
+    authorize @task
+
+    respond_to do |format|
+      format.html { render partial: 'create.html', locals: { project: @project } }
+      format.text { render partial: 'create.html', locals: { project: @project } }
+    end
+  end
+
+  def create
+    @task = Task.new(task_params)
     @task.project = @project
     @task.status = false
-    @task.description = params[:description]
-    @task.address = params[:address]
-    @task.order = params[:order]
+    @task.order = @project.tasks.sort_by(&:order).last.order+1
+
+    authorize @task
 
     @project.tasks.each do |t|
       if t != @task && t.order <= @task.order
@@ -41,6 +48,18 @@ class TasksController < ApplicationController
       end
       @task.save
     end
+
+    respond_to do |format|
+      format.json { render partial: 'show.html', locals: { project: @project, task: @task } }
+      format.html { render partial: 'show.html', locals: { project: @project, task: @task } } # Follow regular flow of Rails
+      format.text { render partial: 'show.html', locals: { project: @project, task: @task } }
+    end
+  end
+
+  def complete!
+    @task = Task.find(params[:id])
+    @task.status = true
+    @task.save!
   end
 
   def update
@@ -48,9 +67,9 @@ class TasksController < ApplicationController
     authorize @task
     @task.update(task_params)
     respond_to do |format|
-    format.json { render partial: 'show.html', locals: { project: @project, task: @task } }
-    format.html { render partial: 'show.html', locals: { project: @project, task: @task } } # Follow regular flow of Rails
-    format.text { render partial: 'show.html', locals: { project: @project, task: @task } }
+      format.json { render partial: 'show.html', locals: { project: @project, task: @task } }
+      format.html { render partial: 'show.html', locals: { project: @project, task: @task } } # Follow regular flow of Rails
+      format.text { render partial: 'show.html', locals: { project: @project, task: @task } }
     end
   end
 

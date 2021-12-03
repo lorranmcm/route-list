@@ -13,6 +13,10 @@ class TaskPolicy < ApplicationPolicy
       true
     end
 
+    def new?
+      true
+    end
+
     def update?
       true
     end
