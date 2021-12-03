@@ -13,7 +13,7 @@ class TaskPolicy < ApplicationPolicy
       true
     end
 
-    def createform?
+    def new?
       true
     end
 

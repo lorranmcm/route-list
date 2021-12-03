@@ -16,8 +16,10 @@ class TasksController < ApplicationController
     end
   end
 
-  def createform
+  def new
     @task = Task.new
+    authorize @task
+
     respond_to do |format|
       format.html { render partial: 'create.html', locals: { project: @project } }
       format.text { render partial: 'create.html', locals: { project: @project } }
@@ -25,11 +27,11 @@ class TasksController < ApplicationController
   end
 
   def create
-    @project = Project.find(params[:project_id])
-    @task = Task.new
-    @task.user_id = current_user.id
+    @task = Task.new(task_params)
     @task.project = @project
     @task.status = false
+    @task.order = @project.tasks.sort_by(&:order).last.order+1
+
     authorize @task
 
     @project.tasks.each do |t|
@@ -38,6 +40,7 @@ class TasksController < ApplicationController
         t.save!
       end
       @task.save
+    end
 
     respond_to do |format|
       format.json { render partial: 'show.html', locals: { project: @project, task: @task } }
@@ -46,7 +49,10 @@ class TasksController < ApplicationController
     end
   end
 
-
+  def complete!
+    @task = Task.find(params[:id])
+    @task.status = true
+    @task.save!
   end
 
   def update

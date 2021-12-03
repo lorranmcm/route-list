@@ -10,12 +10,9 @@ export default class extends Controller {
 }
 
   edit(){
-    console.log(this.element.dataset.projectId)
-    console.log(this.element.dataset.taskId)
-    console.log(this.element.dataset)
     fetch(`/projects/${this.element.dataset.projectId}/tasks/${this.element.dataset.taskId}`, {
       method: 'PATCH',
-      headers: { 'Accept': 'application/json"', 'X-CSRF-Token': csrfToken(), 'Content-Type': 'application/json' },
+      headers: { 'Accept': 'application/json', 'X-CSRF-Token': csrfToken(), 'Content-Type': 'application/json' },
       body: JSON.stringify({
         task: {
           description: this.description
@@ -30,6 +27,9 @@ export default class extends Controller {
   }
 
   editmode(){
+    console.log(this.formTarget)
+    console.log(this.element.dataset.taskId)
+    console.log(this.element.dataset)
     this.buttonTarget.classList.replace("btn-success", "btn-warning");
     this.buttonTarget.value = "Save";
   }
