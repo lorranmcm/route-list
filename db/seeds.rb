@@ -33,11 +33,19 @@ task_seed_one.project = project_seed_one
 task_seed_one.save!
 
 task_seed_two = Task.new(
-  title: "Pick up Pilar and go to Mark`s kissing arena",
-  description: "After the delivery of the documents on Correios, give a ride to Pilar to Mark`s kissing arena.",
-  address: "Avenida Nossa Senhora de Copacabana, 1236"
+  title: "Send the documents",
+  description: "We need to send this documents to Le Wagon SP, the address is written on the note Milene gave you.",
+  address: "Avenida Nossa Senhora de Copacabana, 540"
 )
 task_seed_two.project = project_seed_one
 task_seed_two.save!
+
+task_seed_three = Task.new(
+  title: "Pick up Pilar and go to Mark`s kissing arena",
+  description: "After the delivery of the documents on Correios, give Pilar a ride to Mark`s kissing arena.",
+  address: "Av. Nossa Sra. de Copacabana, 1236"
+)
+task_seed_three.project = project_seed_one
+task_seed_three.save!
 
 puts "Created Task"
