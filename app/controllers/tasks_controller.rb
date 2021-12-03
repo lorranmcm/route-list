@@ -70,11 +70,12 @@ class TasksController < ApplicationController
     @task = Task.find(params[:id])
     authorize @task
     @task.update(task_params)
-    respond_to do |format|
-      format.json { redirect_to project_task_path(@project) }
-      format.html { redirect_to project_task_path(@project) }
-      format.text { redirect_to project_task_path(@project) }
-    end
+  end
+
+  def destroy
+    @task.destroy
+    authorize @trask
+    redirect_to project_task_path
   end
 
   private

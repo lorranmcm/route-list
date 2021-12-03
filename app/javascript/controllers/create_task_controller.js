@@ -20,8 +20,6 @@ export default class extends Controller {
     // })
       .then(response => response.text())
       .then((data) => {
-        console.log(data)
-
         this.buttoncreate.classList.replace("btn-warning", "btn-success");
         this.buttoncreate.value = "Saved!";
       })
