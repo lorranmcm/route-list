@@ -4,10 +4,17 @@ class TasksController < ApplicationController
   def index
     @tasks = Task.all
     @tasks = policy_scope(Task).order(created_at: :desc)
+    @markers = @tasks.geocoded.map do |task|
+      {
+        lat: task.latitude,
+        lng: task.longitude,
+        info_window: render_to_string(partial: "info_window", locals: { task: task })
+      }
+    end
   end
 
   def show
-    @task = Task.find(params[:id]) ##check future route
+    @task = Task.find(params[:id]) #check future route
     @task.description
 
     respond_to do |format|
