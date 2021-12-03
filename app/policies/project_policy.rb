@@ -13,7 +13,7 @@ class ProjectPolicy < ApplicationPolicy
     true
   end
 
-  def createform?
+  def destroy?
     true
   end
 end

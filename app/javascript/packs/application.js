@@ -34,3 +34,12 @@ document.addEventListener('turbolinks:load', () => {
 });
 
 import "controllers"
+
+// Mapbox css
+import 'mapbox-gl/dist/mapbox-gl.css';
+// Mapbox js
+import { initMapbox } from '../plugins/init_mapbox';
+
+document.addEventListener('turbolinks:load', () => {
+  initMapbox();
+})
