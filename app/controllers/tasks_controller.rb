@@ -37,22 +37,26 @@ class TasksController < ApplicationController
     @task = Task.new(task_params)
     @task.project = @project
     @task.status = false
-    @task.order = @project.tasks.sort_by(&:order).last.order+1
+    # if @project.tasks.count != 0
+    #   @task.order = @project.tasks.sort_by(&:order).last.order+1
+    # else
+    #   @task.order = 1
+    # end
 
     authorize @task
 
-    @project.tasks.each do |t|
-      if t != @task && t.order <= @task.order
-        t.order -= 1
-        t.save!
-      end
-      @task.save
-    end
+    # @project.tasks.each do |t|
+    #   if t != @task && t.order <= @task.order
+    #     t.order -= 1
+    #     t.save!
+    #   end
+    # end
+    @task.save
 
     respond_to do |format|
-      format.json { render partial: 'show.html', locals: { project: @project, task: @task } }
-      format.html { render partial: 'show.html', locals: { project: @project, task: @task } } # Follow regular flow of Rails
-      format.text { render partial: 'show.html', locals: { project: @project, task: @task } }
+      format.json { redirect_to project_tasks_path(@project) }
+      format.html { redirect_to project_tasks_path(@project) }
+      format.text { redirect_to project_tasks_path(@project) }
     end
   end
 
@@ -67,9 +71,9 @@ class TasksController < ApplicationController
     authorize @task
     @task.update(task_params)
     respond_to do |format|
-      format.json { render partial: 'show.html', locals: { project: @project, task: @task } }
-      format.html { render partial: 'show.html', locals: { project: @project, task: @task } } # Follow regular flow of Rails
-      format.text { render partial: 'show.html', locals: { project: @project, task: @task } }
+      format.json { redirect_to project_task_path(@project) }
+      format.html { redirect_to project_task_path(@project) }
+      format.text { redirect_to project_task_path(@project) }
     end
   end
 
@@ -80,6 +84,6 @@ class TasksController < ApplicationController
   end
 
   def task_params
-    params.require(:task).permit(:title, :description, :address)
+    params.require(:task).permit(:description, :title, :address)
   end
 end
