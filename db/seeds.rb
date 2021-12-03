@@ -43,7 +43,7 @@ task_seed_two.save!
 task_seed_three = Task.new(
   title: "Pick up Pilar and go to Mark`s kissing arena",
   description: "After the delivery of the documents on Correios, give Pilar a ride to Mark`s kissing arena.",
-  address: "Av. Nossa Sra. de Copacabana, 1236"
+  address: "Av. Nossa Sra. de Copacabana, 1236, Copacabana, Rio de Janeiro"
 )
 task_seed_three.project = project_seed_one
 task_seed_three.save!
