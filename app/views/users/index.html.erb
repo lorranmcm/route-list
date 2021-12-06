@@ -1,0 +1,21 @@
+<h1>Users</h1>
+
+<!-- Container -->
+<div class="container">
+  <div class="row">
+    <!-- Column 1: user list card -->
+    <div class="col-sm-4">
+      <% @users.each do |user| %>
+        <div class="card-product" data-action="click->index#open" data-user-id=<%=user.id%>>
+          <div class="card-product-infos">
+            <h2><%=user.first_name%> <%= user.last_name %></h2>
+            <p>Selina | 1.6km</p>
+            <%= link_to '#', class: 'btn btn-success' do %>
+              <i class='fas fa-check'></i>
+            <% end %>
+          </div>
+        </div>
+      <%end%>
+    </div>
+  </div>
+</div>
