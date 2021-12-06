@@ -1,12 +1,12 @@
-<div class="whitebck" contenteditable="true" >
+<div class="whitebck" >
 
-  <div class="adress_form" data-controller="update" data-user-id=<%=@user.id%>>
+  <div class="adress_form" data-controller="update_user" data-user-id=<%=@user.id%>>
     <%= simple_form_for([@user], remote: true, data: {target: "update.form", id: @user.id }) do |f| %>
-      <%= f.input :first_name, label: 'First name', input_html: { data: { action: "input->update#editmode", target: 'update.first_name'}, rows: 1 }, required: true  %>
-      <%= f.input :last_name, label: 'Last name', input_html: { data: { action: "input->update#editmode", target: 'update.last_name'}, rows: 1 }, required: true  %>
-      <%= f.input :email, label: 'Email', input_html: { data: { action: "input->update#editmode", target: 'update.email'}, rows: 1 }, required: true  %>
-      <%= f.button :submit, "Saved!", data: { action: "click->update#edit", update_target:"button" }, class:"btn btn-success" %>
+      <%= f.input :first_name, label: 'First name', input_html: { data: { action: "input->update_user#editmode", target: 'update.first_name'}, rows: 1 }, required: true  %>
+      <%= f.input :last_name, label: 'Last name', input_html: { data: { action: "input->update_user#editmode", target: 'update.last_name'}, rows: 1 }, required: true  %>
+      <%= f.input :email, label: 'Email', input_html: { data: { action: "input->update_user#editmode", target: 'update.email'}, rows: 1 }, required: true  %>
+      <%= f.button :submit, "Saved!", data: { action: "click->update_user#edit", update_target:"button" }, class:"btn btn-success" %>
     <% end %>
-    <div data-target="update.display_description"></div>
+    <div data-target="update.display_user_description"></div>
   </div>
 </div>

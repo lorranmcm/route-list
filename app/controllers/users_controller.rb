@@ -1,12 +1,14 @@
 class UsersController < ApplicationController
+  before_action :set_user, except: :index
 
   def index
     @users = policy_scope(User).order(created_at: :desc)
   end
 
   def show
-    @user = user.find(params[:id]) #check future route
-    @user.description
+    @user = User.find(params[:id]) #check future route
+    @user.first_name
+    @user.last_name
 
     respond_to do |format|
       format.html # Follow regular flow of Rails
@@ -14,17 +16,27 @@ class UsersController < ApplicationController
     end
   end
 
+  private
+
+  def set_user
+    @user = User.find(params[:id])
+  end
+
+  def user_params
+    params.require(:user).permit(:first_name, :last_name)
+  end
+end
   #def new
   #  @user = user.new
   #  authorize @user
-#
+
   #  respond_to do |format|
   #    format.html { render partial: 'create.html', locals: { project: @project } }
   #    format.text { render partial: 'create.html', locals: { project: @project } }
   #  end
-  #end
-#
-  #def create
+  # end
+
+  # def create
   #  @user = user.new(user_params)
   #  @user.project = @project
   #  @user.status = false
@@ -33,17 +45,17 @@ class UsersController < ApplicationController
   #  # else
   #  #   @user.order = 1
   #  # end
-#
+
   #  authorize @user
-#
+
   #  # @project.users.each do |t|
   #  #   if t != @user && t.order <= @user.order
   #  #     t.order -= 1
   #  #     t.save!
   #  #   end
   #  # end
-  #  @user.save
-#
+  # @user.save
+
   #  respond_to do |format|
   #    format.json { redirect_to project_users_path(@project) }
   #    format.html { redirect_to project_users_path(@project) }
@@ -56,26 +68,25 @@ class UsersController < ApplicationController
   #   @user.status = true
   #   @user.save!
   # end
-#
+
   # def update
   #   @user = user.find(params[:id])
   #   authorize @user
   #   @user.update(user_params)
   # end
-#
-  # def destroy
-  #   @user.destroy
-  #   authorize @trask
-  #   redirect_to project_user_path
-  # end
-#
-  # private
-#
-  # def set_project
-  #   @project = Project.find(params[:project_id])
-  # end
-#
-  # def user_params
-  #   params.require(:user).permit(:description, :title, :address)
-  # end
-end
+
+# def destroy
+#   @user.destroy
+#   authorize @trask
+#   redirect_to project_user_path
+# end
+
+# private
+
+# def set_project
+#   @project = Project.find(params[:project_id])
+# end
+
+# def user_params
+# params.require(:user).permit(:description, :title, :address)
+#   end

@@ -7,7 +7,7 @@ export default class extends Controller {
   connect(){
     this.projectValue = this.element.dataset.project
     this.taskValue = this.element.dataset.taskId
-}
+  }
 
   edit(){
     fetch(`/projects/${this.element.dataset.projectId}/tasks/${this.element.dataset.taskId}`, {
@@ -19,10 +19,10 @@ export default class extends Controller {
         }
       })
     })
-      .then(response => response.text())
-      .then((data) => {
-        this.buttonTarget.classList.replace("btn-warning", "btn-success");
-        this.buttonTarget.value = "Saved!";
+    .then(response => response.text())
+    .then((data) => {
+      this.buttonTarget.classList.replace("btn-warning", "btn-success");
+      this.buttonTarget.value = "Saved!";
     })
   }
 
