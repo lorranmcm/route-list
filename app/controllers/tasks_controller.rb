@@ -45,6 +45,8 @@ class TasksController < ApplicationController
     # else
     #   @task.order = 1
     # end
+    @chatroom = Chatroom.new(chatroom: @task.title)
+    @chatroom.save
 
     authorize @task
 
