@@ -6,6 +6,9 @@ class TasksController < ApplicationController
     @tasks = policy_scope(Task).order(created_at: :desc)
     @markers = @tasks.geocoded.map do |task|
       {
+        project_id: @project.id,
+        task_project_id: task.project.id,
+        task_id: task.id,
         lat: task.latitude,
         lng: task.longitude,
         info_window: render_to_string(partial: "info_window", locals: { task: task })

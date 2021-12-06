@@ -11,18 +11,25 @@ const buildMap = (mapElement) => {
 
 const addMarkersToMap = (map, markers) => {
   markers.forEach((marker) => {
-    const popup = new mapboxgl.Popup().setHTML(marker.info_window);
+    if (marker.project_id == marker.task_project_id) {
+      const popup = new mapboxgl.Popup().setHTML(marker.info_window);
 
-    new mapboxgl.Marker()
-      .setLngLat([marker.lng, marker.lat])
-      .setPopup(popup)
-      .addTo(map);
+      new mapboxgl.Marker()
+        .setLngLat([marker.lng, marker.lat])
+        .setPopup(popup)
+        .addTo(map);
+    };
   });
 };
 
 const fitMapToMarkers = (map, markers) => {
   const bounds = new mapboxgl.LngLatBounds();
-  markers.forEach(marker => bounds.extend([marker.lng, marker.lat]));
+  markers.forEach((marker) => {
+    if (marker.project_id == marker.task_project_id) {
+      bounds.extend([marker.lng, marker.lat])
+    }
+  });
+
   map.fitBounds(bounds, { padding: 70, maxZoom: 15 });
 };
 
