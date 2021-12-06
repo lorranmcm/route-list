@@ -1,0 +1,35 @@
+<h1><%=@project.title%></h1>
+
+<!-- Container -->
+<div class="container" data-controller="index create-task" data-project-id=<%=@project.id%>>
+  <div class="row">
+    <!-- Column 1: Task list card -->
+    <div class="col-sm-4">
+      <% @project.tasks.each do |task| %>
+        <div class="card-product" data-action="click->index#opendescription" data-task-id=<%=task.id%>>
+          <div class="card-product-infos">
+            <h2><%=task.title%></h2>
+            <%= link_to '#', class: 'btn btn-success' do %>
+              <i class='fas fa-check'></i>
+            <% end %>
+          </div>
+        </div>
+      <%end%>
+      <!-- Create new Task buttons (2) -->
+      <a class="btn btn-flat" data-action="click->index#newtaskform">Create New Task</a>
+    </div>
+    <!-- Column 2: Task description -->
+    <div class="col-sm-4">
+      <div class="whitebck" data-index-target="taskdescription">
+        <h1>to dos</h1>
+      </div>
+    </div>
+    <!-- Column 3: Geocoder -->
+    <div class="col-sm-4">
+      <div id="map"
+     style="width: 100%; height: 600px;"
+     data-markers="<%= @markers.to_json %>"
+     data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"></div>
+    </div>
+  </div>
+</div>
