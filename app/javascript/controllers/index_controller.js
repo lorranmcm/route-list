@@ -1,7 +1,7 @@
 import { Controller } from "stimulus";
 
 export default class extends Controller {
-  static targets = ['taskdescription'];
+  static targets = ['taskdescription', 'userdescription'];
 
   opendescription(event) {
     fetch(`/projects/${this.element.dataset.projectId}/tasks/${event.currentTarget.dataset.taskId}`, { headers: { 'Accept': 'text/plain' } })
@@ -19,7 +19,13 @@ export default class extends Controller {
         this.taskdescriptionTarget.innerHTML = data;
       });
   }
-
+  openUser(event){
+    fetch(`/users/${event.currentTarget.dataset.userId}`, { headers: { 'Accept': 'text/plain' } })
+      .then(response => response.text())
+      .then((data) => {
+        this.userdescriptionTarget.innerHTML = data;
+      })
+  }
 }
 
 

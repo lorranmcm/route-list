@@ -1,12 +1,12 @@
 <h1>Users</h1>
 
 <!-- Container -->
-<div class="container">
+<div class="container" data-controller="index">
   <div class="row">
     <!-- Column 1: user list card -->
     <div class="col-sm-4">
       <% @users.each do |user| %>
-        <div class="card-product" data-action="click->index#open" data-user-id=<%=user.id%>>
+        <div class="card-product" data-action="click->index#openUser" data-user-id=<%=user.id%>>
           <div class="card-product-infos">
             <h2><%=user.first_name%> <%= user.last_name %></h2>
             <p>Selina | 1.6km</p>
@@ -17,5 +17,15 @@
         </div>
       <%end%>
     </div>
+
+    <div class="col-sm-4">
+      <div class="whitebck" data-index-target="userdescription">
+      </div>
+    </div>
+
+
+
+
+
   </div>
 </div>
