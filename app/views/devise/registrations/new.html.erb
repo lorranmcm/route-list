@@ -6,6 +6,14 @@
         <%= f.error_notification %>
 
         <div class="form-inputs">
+          <%= f.input :first_name,
+                      required: true,
+                      autofocus: true,
+                      input_html: { autocomplete: "first-name", class: "login-input" } %>
+          <%= f.input :last_name,
+                      required: true,
+                      autofocus: true,
+                      input_html: { autocomplete: "last-name", class: "login-input" } %>
           <%= f.input :email,
                       required: true,
                       autofocus: true,
@@ -17,6 +25,10 @@
           <%= f.input :password_confirmation,
                       required: true,
                       input_html: { autocomplete: "new-password", class: "login-input" }%>
+          <%= f.input :team,
+                      required: true,
+                      collection: ['manager', 'employee'],
+                      input_html: { autocomplete: "team", class: "login-input" }%>
         </div>
 
         <p class="account-reminder">Already have an account? <%= render "devise/shared/links" %></p>

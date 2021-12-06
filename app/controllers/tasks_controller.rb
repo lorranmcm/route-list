@@ -69,7 +69,11 @@ class TasksController < ApplicationController
   def update
     @task = Task.find(params[:id])
     authorize @task
-    @task.update(task_params)
+    if current_user.team == 'manager'
+      @task.update(manager_task_params)
+    else
+      @task.update(employee_task_params)
+    end
   end
 
   def destroy
@@ -79,6 +83,14 @@ class TasksController < ApplicationController
   end
 
   private
+
+  def manager_task_params
+    params.require(:task).permit(:description, :title, :address)
+  end
+
+  def employee_task_params
+    params.require(:task).permit(:status)
+  end
 
   def set_project
     @project = Project.find(params[:project_id])

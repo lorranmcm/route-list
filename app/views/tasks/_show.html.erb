@@ -1,6 +1,5 @@
 <div class="whitebck" contenteditable="true" >
   <h1>to dos</h1>
-
   <div class="adress_form" data-controller="update" data-project-id=<%=@project.id%> data-task-id=<%=@task.id%>>
     <%= simple_form_for([@project, @task], remote: true, data: {target: "update.form", id: @task.id }) do |f| %>
       <%= f.input :description, label: 'To do', input_html: { data: { action: "input->update#editmode", target: 'update.description'}, rows: 9 }, required: true  %>
@@ -8,4 +7,5 @@
     <% end %>
     <div data-target="update.display_description"></div>
   </div>
+
 </div>

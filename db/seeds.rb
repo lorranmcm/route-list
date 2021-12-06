@@ -9,9 +9,20 @@ user_seed = User.new(
   first_name: "Zippora",
   last_name: "Latzko",
   email: "zippy@gmail.com",
-  password: "123456"
+  password: "123456",
+  team: "manager"
 )
 user_seed.save!
+puts "User Created"
+
+employee = User.new(
+  first_name: "Lorran",
+  last_name: "Monteiro",
+  email: "lorranmcm@gmail.com",
+  password: "123456",
+  team: "employee"
+)
+employee.save!
 puts "User Created"
 
 project_seed_one = Project.new(title: "Demo day")
