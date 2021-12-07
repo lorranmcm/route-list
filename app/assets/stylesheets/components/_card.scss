@@ -59,6 +59,28 @@
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
 }
 
+.user-category-yellow {
+  overflow: hidden;
+  height: 80px;
+  display: flex;
+  background-color: #FFC300;
+  color: #001D3D;
+  align-items: center;
+  margin: 20px;
+  border-radius: 12px;
+}
+
+.user-category-yellow h2 {
+  padding-left: 10px;
+  font-size: 20px;
+  margin: 0;
+}
+.user-category-yellow i {
+  font-size: 25px;
+  font-weight: bold;
+  margin: 0;
+}
+
 section > .container{
   padding: 2rem 0;
   display: flex;

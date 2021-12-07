@@ -23,9 +23,18 @@
       </div>
     </div>
 
-
-
-
+    <div class="col-sm-4" data-controller="project-card">
+      <% @projects.each do |project|%>
+        <div class="user-category-yellow justify-content-between" data-controller="project-card">
+          <div data-project-card-target="view" class="js-project-view">
+            <h2 data-project-card-target="projectTitle"><%= project.title %></h2>
+            </div>
+              <i class="fas fa-check-square"></i>
+            <div>
+          </div>
+        </div>
+      <% end %>
+    </div>
 
   </div>
 </div>
