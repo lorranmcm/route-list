@@ -12,4 +12,9 @@ class User < ApplicationRecord
                   using: {
                     tsearch: { prefix: true }
                   }
+  # pg_search_scope :search_by_project,
+  #                 against: :title,
+  #                 using: {
+  #                   tsearch: { prefix: true }
+  #                 }
 end
