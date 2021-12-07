@@ -1,5 +1,5 @@
 <div class="whitebck" >
-  <h1>to dos</h1>
+  <h1>To Do's</h1>
 
   <div class="adress_form" data-controller="update_task" data-project-id=<%=@project.id%> data-task-id=<%=@task.id%>>
     <%= simple_form_for([@project, @task], remote: true, data: {target: "update_task.form", id: @task.id }) do |f| %>
