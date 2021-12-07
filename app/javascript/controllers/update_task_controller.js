@@ -33,6 +33,17 @@ export default class extends Controller {
     this.buttonTarget.classList.replace("btn-success", "btn-warning");
     this.buttonTarget.value = "Save";
   }
+
+  closecard(event) {
+    event.preventDefault();
+    // this.element.closest('product-card').fadeOut();
+    console.log(this.element.dataset.projectId);
+    console.log(event.currentTarget.dataset.taskId);
+    fetch(`/projects/${this.element.dataset.projectId}/tasks/${event.currentTarget.dataset.taskId}`, {
+      method: 'DELETE',
+      headers: { 'Accept': "application/json", 'X-CSRF-Token': csrfToken() },
+    });
+  }
 }
 
 // let button = document.querySelector("#editbutton");
