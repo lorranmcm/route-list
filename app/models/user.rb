@@ -12,6 +12,9 @@ class User < ApplicationRecord
                   using: {
                     tsearch: { prefix: true }
                   }
+  def full_name
+    "#{first_name} #{last_name}"
+  end
   # pg_search_scope :search_by_project,
   #                 against: :title,
   #                 using: {

@@ -12,6 +12,7 @@ class UsersController < ApplicationController
       @users = policy_scope(User).order(created_at: :desc)
       @projects = policy_scope(Project).order(created_at: :desc)
     end
+    @assignment = Assignment.new
   end
 
   def show
