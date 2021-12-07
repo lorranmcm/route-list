@@ -24,4 +24,8 @@ class TaskPolicy < ApplicationPolicy
     def index?
       true
     end
+
+    def destroy?
+      true
+    end
 end
