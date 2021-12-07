@@ -21,7 +21,7 @@ class TasksController < ApplicationController
     @task.description
 
     respond_to do |format|
-      format.html # Follow regular flow of Rails
+      format.html { render partial: 'show.html', locals: { project: @project, task: @task } }
       format.text { render partial: 'show.html', locals: { project: @project, task: @task } }
     end
   end
@@ -82,9 +82,10 @@ class TasksController < ApplicationController
   end
 
   def destroy
+    @task = Task.find(params[:id])
     @task.destroy
-    authorize @trask
-    redirect_to project_task_path
+    authorize @task
+    redirect_to project_tasks_path(@project)
   end
 
   private
