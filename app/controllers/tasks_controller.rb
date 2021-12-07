@@ -2,7 +2,7 @@ class TasksController < ApplicationController
   before_action :set_project
 
   def index
-    @tasks = Task.all
+    @tasks = Task.includes(:chatroom)
     @tasks = policy_scope(Task).order(created_at: :desc)
     @markers = @tasks.geocoded.map do |task|
       {
@@ -56,6 +56,10 @@ class TasksController < ApplicationController
     # end
 
     authorize @task
+    @task.save
+
+    @chatroom = Chatroom.new(chatroom: @task.title, task: @task)
+    @chatroom.save
 
     # @project.tasks.each do |t|
     #   if t != @task && t.order <= @task.order
@@ -63,7 +67,6 @@ class TasksController < ApplicationController
     #     t.save!
     #   end
     # end
-    @task.save
 
     respond_to do |format|
       format.json { redirect_to project_tasks_path(@project) }

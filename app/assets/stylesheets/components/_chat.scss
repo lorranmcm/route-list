@@ -1,0 +1,16 @@
+.chatbox {
+  border-radius: 12px;
+  padding: 20px;
+  margin-top: 20px;
+  box-shadow: 2px 2px 2px 1px rgba(0, 0.2, 0.2, 0.2);;
+}
+
+#messages {
+  overflow: scroll;
+  height: 200px;
+}
+
+.message-container {
+  background-color: #DBDBDB;
+  border-radius: 20px;
+}
