@@ -2,7 +2,11 @@ class UsersController < ApplicationController
   before_action :set_user, except: :index
 
   def index
-    @users = policy_scope(User).order(created_at: :desc)
+    if params[:query].present?
+      @users = policy_scope(User).search_by_name(params[:query])
+    else
+      @users = policy_scope(User).order(created_at: :desc)
+    end
     @projects = policy_scope(Project).order(created_at: :desc)
   end
 
