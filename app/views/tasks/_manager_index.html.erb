@@ -1,12 +1,12 @@
 <h1><%=@project.title%></h1>
 
 <!-- Container -->
-<div class="container" data-controller="index create-task" data-project-id=<%=@project.id%>>
+<div class="container" data-controller="index create-task chat"  data-project-id=<%=@project.id%>>
   <div class="row">
     <!-- Column 1: Task list card -->
     <div class="col-sm-4">
       <% @project.tasks.each do |task| %>
-        <div class="card-product" data-action="click->index#opendescription" data-task-id=<%=task.id%>>
+        <div class="card-product" data-action="click->index#opendescription click->chat#openchat" data-task-id=<%=task.id%> data-chat-id=<%=task.chatroom.id%>>
           <div class="card-product-infos">
             <h2><%=task.title%></h2>
             <%= link_to '#', class: 'btn btn-success' do %>
@@ -27,9 +27,14 @@
     <!-- Column 3: Geocoder -->
     <div class="col-sm-4">
       <div id="map"
-     style="width: 100%; height: 600px;"
-     data-markers="<%= @markers.to_json %>"
-     data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"></div>
+        style="width: 100%; height: 600px;"
+        data-markers="<%= @markers.to_json %>"
+        data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
+      </div>
+     <!-- Column 3: Chatroom -->
+      <div id="chat" data-chat-target="chatbox">
+        <h1>test</h1>
+      </div>
     </div>
   </div>
 </div>
