@@ -21,7 +21,7 @@ class TasksController < ApplicationController
     @task.description
 
     respond_to do |format|
-      format.html # Follow regular flow of Rails
+      format.html { render partial: 'show.html', locals: { project: @project, task: @task } }
       format.text { render partial: 'show.html', locals: { project: @project, task: @task } }
     end
   end
@@ -40,11 +40,21 @@ class TasksController < ApplicationController
     @task = Task.new(task_params)
     @task.project = @project
     @task.status = false
+    @chatroom = Chatroom.new(chatroom: @task.title)
+    @chatroom.save
+    @employees = User.all.select { |user| user.team == "employee" }
+    @idle = @employees.min_by { |user| user.assignments.count }
+    @assignment = Assignment.new(task_id: @task, user_id: @idle)
+
+    # Take the user that has less assignment
+    # when a task is created a new assignment is created between the task and the user that has less tasks
+
     # if @project.tasks.count != 0
     #   @task.order = @project.tasks.sort_by(&:order).last.order+1
     # else
     #   @task.order = 1
     # end
+
     authorize @task
     @task.save
 
@@ -82,9 +92,10 @@ class TasksController < ApplicationController
   end
 
   def destroy
+    @task = Task.find(params[:id])
     @task.destroy
-    authorize @trask
-    redirect_to project_task_path
+    authorize @task
+    redirect_to project_tasks_path(@project)
   end
 
   private
