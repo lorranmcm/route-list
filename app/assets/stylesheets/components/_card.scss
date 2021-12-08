@@ -59,6 +59,15 @@
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
 }
 
+.user-show {
+  background-color: white;
+  color: #001D3D;
+  border-radius: 12px;
+  margin-top: 48px;
+  box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.2);
+  height: 500px;;
+}
+
 .user-category-yellow {
   overflow: hidden;
   height: 70px;
@@ -79,6 +88,23 @@
   font-size: 25px;
   font-weight: bold;
   margin: 0;
+}
+
+.assignment-cards {
+  background: #F7F2EA;
+  box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.2);
+  border-radius: 12px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px;
+  position: static;
+  left: calc(50% - 378.5px/2 - 201.25px);
+  order: 0;
+  flex-grow: 1;
+  margin: 0px 24px;
+  width: 50%;
 }
 
 section > .container{

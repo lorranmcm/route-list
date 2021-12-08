@@ -76,19 +76,32 @@ class TasksController < ApplicationController
   end
 
   def complete!
+    binding.pry
     @task = Task.find(params[:id])
-    @task.status = true
+    @task.status = false
     @task.save!
   end
 
   def update
     @task = Task.find(params[:id])
+    @beforetitle = @task.title
     authorize @task
     if current_user.team == 'manager'
       @task.update(manager_task_params)
     else
       @task.update(employee_task_params)
     end
+    if @task.status == false || @beforetitle != @task.title
+      redirect_to project_tasks_path(@project)
+    end
+  end
+
+  def complete
+    @task = Task.find(params[:id])
+    authorize @task
+    @task.status = false
+    @task.save
+    redirect_to project_tasks_path(@project)
   end
 
   def destroy
@@ -101,7 +114,7 @@ class TasksController < ApplicationController
   private
 
   def manager_task_params
-    params.require(:task).permit(:description, :title, :address)
+    params.require(:task).permit(:description, :title, :address, :status)
   end
 
   def employee_task_params

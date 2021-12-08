@@ -28,4 +28,8 @@ class TaskPolicy < ApplicationPolicy
     def destroy?
       true
     end
+
+    def complete?
+      true
+    end
 end

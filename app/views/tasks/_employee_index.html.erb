@@ -4,14 +4,19 @@
     <!-- Column 1: Task list card -->
     <div class="col-sm-4">
       <% @project.tasks.each do |task| %>
-        <div class="card-product" data-action="click->index#opendescription" data-task-id=<%=task.id%>>
-          <div class="card-product-infos">
-            <h2><%=task.title%></h2>
-            <%= link_to '#', class: 'btn btn-success' do %>
-              <i class='fas fa-check'></i>
-            <% end %>
-          </div>
-        </div>
+          <% if task.assignment_ids == current_user.assignment_ids %>
+            <div class="card-product" data-action="click->index#opendescription click->chat#openchat" data-task-id=<%=task.id%> data-chat-id=<%=task.chatroom.id%>>
+              <div class="card-product-infos">
+                <h2><%=task.title%></h2>
+                <%= simple_form_for([@project, task]) do |f| %>
+                  <%= f.input :status, :as => :hidden, :input_html => { :value => 0 } %>
+                  <%= button_tag(type: 'submit', class: "fas fa-check") do %>
+                    <i></i>
+                  <% end %>
+                <% end %>
+              </div>
+            </div>
+          <%end%>
       <%end%>
     </div>
   </div>

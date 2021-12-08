@@ -4,13 +4,13 @@ class UsersController < ApplicationController
   def index
     if params[:user_query].present?
       @users = policy_scope(User).search_by_name(params[:user_query])
-      @projects = policy_scope(Project).order(created_at: :desc)
-    elsif params[:project_query].present?
-      @projects = policy_scope(Project).search_by_title(params[:project_query])
-      @users = policy_scope(User).order(created_at: :desc)
+      @tasks = policy_scope(Task).order(created_at: :desc)
+    elsif params[:task_query].present?
+      @tasks = policy_scope(Task).search_by_title(params[:task_query])
+      @users = policy_scope(Task).order(created_at: :desc)
     else
       @users = policy_scope(User).order(created_at: :desc)
-      @projects = policy_scope(Project).order(created_at: :desc)
+      @tasks = policy_scope(Task).order(created_at: :desc)
     end
     @assignment = Assignment.new
   end
