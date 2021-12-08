@@ -19,7 +19,11 @@ export default class extends Controller {
         this.taskdescriptionTarget.innerHTML = data;
       });
   }
-  
+
+  completetask() {
+    
+  }
+
   openUser(event){
     fetch(`/users/${event.currentTarget.dataset.userId}`, { headers: { 'Accept': 'text/plain' } })
       .then(response => response.text())
