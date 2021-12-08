@@ -1,6 +1,6 @@
+Assignment.destroy_all
 Task.destroy_all
 Project.destroy_all
-Assignment.destroy_all
 User.destroy_all
 Chatroom.destroy_all
 Message.destroy_all
