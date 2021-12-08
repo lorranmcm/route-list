@@ -10,6 +10,9 @@
 
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload', defer: true %>
     <%= stylesheet_pack_tag 'application' %>
+
+    <%= favicon_link_tag %>
+
   </head>
 
   <body <%= current_user ? "class=light-background" : "class=dark-background"%>>
