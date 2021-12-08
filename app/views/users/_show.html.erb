@@ -1,5 +1,9 @@
-<h3> Name: <%= @user.first_name + " " + @user.last_name %></h3>
-<h3>Email: <%= @user.email  %></h3>
-<% @user.assignments.each do |assignment| %>
-  <%= assignment.task.title %>
-<% end %>
+<div>
+  <h3> Name: <%= @user.full_name %></h3>
+  <h3>Email: <%= @user.email  %></h3>
+</div>
+<div>
+  <% @user.assignments.each do |assignment| %>
+    <%= assignment.task.title %>
+  <% end %>
+</div>
