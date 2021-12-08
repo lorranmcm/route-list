@@ -2,8 +2,8 @@ class TasksController < ApplicationController
   before_action :set_project
 
   def index
-    @tasks = Task.all
-    @tasks = policy_scope(Task).order(order: :desc)
+    @tasks = Task.includes(:chatroom)
+    @tasks = policy_scope(Task).order(created_at: :desc)
     @markers = @tasks.geocoded.map do |task|
       {
         project_id: @project.id,
@@ -39,16 +39,27 @@ class TasksController < ApplicationController
   def create
     @task = Task.new(task_params)
     @task.project = @project
-    @task.status = true
+    @task.status = false
+    @chatroom = Chatroom.new(chatroom: @task.title)
+    @chatroom.save
+    @employees = User.all.select { |user| user.team == "employee" }
+    @idle = @employees.min_by { |user| user.assignments.count }
+    @assignment = Assignment.new(task_id: @task, user_id: @idle)
+
+    # Take the user that has less assignment
+    # when a task is created a new assignment is created between the task and the user that has less tasks
+
     # if @project.tasks.count != 0
     #   @task.order = @project.tasks.sort_by(&:order).last.order+1
     # else
     #   @task.order = 1
     # end
-    @chatroom = Chatroom.new(chatroom: @task.title)
-    @chatroom.save
 
     authorize @task
+    @task.save
+
+    @chatroom = Chatroom.new(chatroom: @task.title, task: @task)
+    @chatroom.save
 
     # @project.tasks.each do |t|
     #   if t != @task && t.order <= @task.order
@@ -56,7 +67,6 @@ class TasksController < ApplicationController
     #     t.save!
     #   end
     # end
-    @task.save
 
     respond_to do |format|
       format.json { redirect_to project_tasks_path(@project) }
