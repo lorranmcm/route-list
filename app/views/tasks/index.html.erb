@@ -1,5 +1,9 @@
-<% if current_user.team == 'manager' %>
-  <%= render "manager_index" %>
-<% else %>
-  <%= render "employee_index" %>
-<% end %>
+<div class="container">
+  <h1 class="project-title"><%=@project.title%></h1>
+
+  <% if current_user.team == 'manager' %>
+    <%= render "manager_index" %>
+  <% else %>
+    <%= render "employee_index" %>
+  <% end %>
+</div>

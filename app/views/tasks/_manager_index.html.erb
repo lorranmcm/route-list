@@ -1,5 +1,3 @@
-<h1><%=@project.title%></h1>
-
 <!-- Container -->
 <div class="container" data-controller="index create-task chat"  data-project-id=<%=@project.id%>>
   <div class="row">
@@ -20,8 +18,7 @@
     </div>
     <!-- Column 2: Task description -->
     <div class="col-sm-4">
-      <div class="whitebck" data-index-target="taskdescription">
-        <h1>to dos</h1>
+      <div data-index-target="taskdescription">
       </div>
     </div>
     <!-- Column 3: Geocoder -->
