@@ -1,0 +1,5 @@
+meta_product_name: "Route List"
+meta_title: "Route List - Get it done on the go"
+meta_description: "Now you can have a todo list integrated with a map!"
+meta_image: "coverfb.jpg" # should exist in `app/assets/images/`
+twitter_account: "@ppilar"   # required for Twitter Cards

@@ -25,10 +25,7 @@ class ApplicationController < ActionController::Base
     devise_controller? || params[:controller] =~ /(^(rails_)?admin)|(^pages$)/
   end
 
-  def page_not_found
-    respond_to do |format|
-      format.html { render template: 'errors/not_found_error', layout: 'layouts/application', status: 404 }
-      format.all  { render nothing: true, status: 404 }
-    end
+  def default_url_options
+    { host: ENV["DOMAIN"] || "localhost:3000" }
   end
 end
