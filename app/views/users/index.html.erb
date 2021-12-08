@@ -15,16 +15,19 @@
           <%= submit_tag "Find", class: "btn btn-secondary" %>
         </div>
       <% end %>
+
       <% @users.each do |user| %>
-        <div class="card-product" data-action="click->index#openUser" data-user-id=<%=user.id%>>
-          <div class="card-product-infos">
-            <h2><%=user.first_name%> <%= user.last_name %></h2>
-            <p>Selina | 1.6km</p>
-            <%= link_to '#', class: 'btn btn-success' do %>
-              <i class='fas fa-check'></i>
-            <% end %>
+        <% if user.team == "employee" %>
+          <div class="card-product" data-action="click->index#openUser" data-user-id=<%=user.id%>>
+            <div class="card-product-infos">
+                <h2><%=user.first_name%> <%= user.last_name %></h2>
+              <p>Selina | 1.6km</p>
+              <%= link_to '#', class: 'btn btn-success' do %>
+                <i class='fas fa-check'></i>
+              <% end %>
+            </div>
           </div>
-        </div>
+        <% end %>
       <%end%>
     </div>
 
