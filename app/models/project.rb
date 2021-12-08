@@ -5,7 +5,6 @@ class Project < ApplicationRecord
   validates :title, presence: true
 
   include PgSearch::Model
-  multisearchable against: :title
   pg_search_scope :search_by_title,
                   against: :title,
                   using: {
