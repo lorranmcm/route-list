@@ -3,7 +3,7 @@ class TasksController < ApplicationController
 
   def index
     @tasks = Task.all
-    @tasks = policy_scope(Task).order(created_at: :desc)
+    @tasks = policy_scope(Task).order(order: :desc)
     @markers = @tasks.geocoded.map do |task|
       {
         project_id: @project.id,
@@ -39,7 +39,7 @@ class TasksController < ApplicationController
   def create
     @task = Task.new(task_params)
     @task.project = @project
-    @task.status = false
+    @task.status = true
     # if @project.tasks.count != 0
     #   @task.order = @project.tasks.sort_by(&:order).last.order+1
     # else
@@ -66,19 +66,32 @@ class TasksController < ApplicationController
   end
 
   def complete!
+    binding.pry
     @task = Task.find(params[:id])
-    @task.status = true
+    @task.status = false
     @task.save!
   end
 
   def update
     @task = Task.find(params[:id])
+    @beforetitle = @task.title
     authorize @task
     if current_user.team == 'manager'
       @task.update(manager_task_params)
     else
       @task.update(employee_task_params)
     end
+    if @task.status == false || @beforetitle != @task.title
+      redirect_to project_tasks_path(@project)
+    end
+  end
+
+  def complete
+    @task = Task.find(params[:id])
+    authorize @task
+    @task.status = false
+    @task.save
+    redirect_to project_tasks_path(@project)
   end
 
   def destroy
@@ -91,7 +104,7 @@ class TasksController < ApplicationController
   private
 
   def manager_task_params
-    params.require(:task).permit(:description, :title, :address)
+    params.require(:task).permit(:description, :title, :address, :status)
   end
 
   def employee_task_params
