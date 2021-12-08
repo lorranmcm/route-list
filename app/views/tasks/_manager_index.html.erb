@@ -5,7 +5,7 @@
   <div class="row">
     <!-- Column 1: Task list card -->
     <div class="col-sm-4">
-      <% @project.tasks.select{|task| task.status==true}.each do |task| %>
+      <% @project.tasks.each do |task| %>
         <div class="card-product" data-action="click->index#opendescription click->chat#openchat" data-task-id=<%=task.id%> data-chat-id=<%=task.chatroom.id%>>
           <div class="card-product-infos">
             <h2><%=task.title%></h2>
