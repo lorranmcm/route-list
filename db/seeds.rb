@@ -58,3 +58,8 @@ chatroom_one.save!
 chatroom_two = Chatroom.new
 chatroom_two.task = task_seed_two
 chatroom_two.save!
+
+assignment_one = Assignment.new
+assignment_one.task = task_seed_one
+assignment_one.user = employee
+assignment_one.save!
