@@ -13,11 +13,28 @@
   opacity: 1;
 }
 
+//.btn-flat {
+//  color: #FFC300;
+//  font-weight: bold;
+//  background-color: #001D3D;
+//  padding: 8px 24px;
+//  border-radius: 4px;
+//  transition: background 0.3s ease;
+//}
+
 .btn-flat {
-  color: #FFC300;
+  color: black;
+  background-color: white;
+  border-radius: 10px;
   font-weight: bold;
-  background-color: #001D3D;
+  border: solid black 2px;
   padding: 8px 24px;
-  border-radius: 4px;
-  transition: background 0.3s ease;
+  width: 370px;
+
+}
+
+.btn-flat:hover {
+  color: black;
+  border: solid black 3px;
+  width: 370px;
 }
