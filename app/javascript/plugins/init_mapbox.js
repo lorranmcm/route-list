@@ -35,6 +35,8 @@ const fitMapToMarkers = (map, markers) => {
 
 const initMapbox = () => {
   const mapElement = document.getElementById('map');
+  mapElement.style.borderRadius = "10px";
+  mapElement.style.boxShadow = "2px 2px 2px 1px rgba(0, 0.2, 0.2, 0.2)";
   if (mapElement) {
     const map = buildMap(mapElement);
     const markers = JSON.parse(mapElement.dataset.markers);

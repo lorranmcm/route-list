@@ -23,10 +23,12 @@
     </div>
     <!-- Column 3: Geocoder -->
     <div class="col-sm-4">
-      <div id="map"
-        style="width: 100%; height: 300px;"
-        data-markers="<%= @markers.to_json %>"
-        data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
+      <div class="mapbox">
+        <div id="map"
+          style="width: 100%; height: 300px;"
+          data-markers="<%= @markers.to_json %>"
+          data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
+        </div>
       </div>
      <!-- Column 3: Chatroom -->
       <div id="chat" data-chat-target="chatbox">
