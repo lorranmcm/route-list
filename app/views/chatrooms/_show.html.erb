@@ -1,7 +1,7 @@
 <div class="whitebck chatbox" >
   <div id="messages" data-chatroom-id="<%= @chatroom.id %>">
     <% @chatroom.messages.each do |message| %>
-      <div class="message-container" id="message-<%= message.id %>">
+      <div class="message-container<%= message.user != current_user ? 'message-employee' : ''%>" id="message-<%= message.id %>">
         <i class="author">
           <span><%= message.user.nickname %></span>
           <small><%= message.created_at.strftime("%a %b %e at %l:%M%p") %></small>
