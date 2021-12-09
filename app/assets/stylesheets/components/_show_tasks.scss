@@ -53,3 +53,26 @@
 //#new_task {
 //  border-radius: 12px;
 //}
+
+
+.whitebck {
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 2px 2px 2px 1px rgba(0, 0.2, 0.2, 0.2);
+}
+
+.create-new-task {
+  font-weight: bold;
+  background-color: #FFC300;
+  border-radius: 10px;
+  width: 160px;
+  color: white;
+}
+
+.create-new-task:hover {
+  font-weight: bold;
+  background-color: #FFC300;
+  border-radius: 10px;
+  width: 160px;
+  color: #001D3D;
+}
