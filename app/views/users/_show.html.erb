@@ -4,7 +4,7 @@
 <div class="d-flex">
   <% @user.assignments.each do |assignment| %>
     <div class="assignment-cards">
-      <%= assignment.task.title %>
+     <%= link_to assignment.task.title, project_tasks_path(assignment.task.project) %>
     </div>
   <% end %>
 </div>

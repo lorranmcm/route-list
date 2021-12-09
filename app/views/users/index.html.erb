@@ -20,7 +20,7 @@
         <% end %>
         <% @users.each do |user| %>
           <% if user.team == "employee" %>
-            <div class="card-product" data-action="click->index#openUser" data-user-id=<%=user.id%>>
+            <div class="card-product-employee" data-action="click->index#openUser" data-user-id=<%=user.id%>>
               <div class="card-product-infos">
                 <h2><%=user.first_name%> <%= user.last_name %></h2>
                 <%= link_to '#', class: 'btn btn-success' do %>
