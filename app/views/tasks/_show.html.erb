@@ -1,14 +1,27 @@
-<div class="whitebck todo-box" >
-  <h1 class="todo-title">To Do's</h1>
-
-  <div class="adress_form" data-controller="update-task" data-project-id=<%=@project.id%> data-task-id=<%=@task.id%>>
-    <%= simple_form_for([@project, @task], remote: true, data: {target: "update-task.form", id: @task.id }) do |f| %>
-      <%= f.input :title, label: 'Title', input_html: { data: { action: "input->update-task#editmode", target: 'update.title'}, rows: 9 }, required: true  %>
-      <%= f.input :address, label: 'Address', input_html: { data: { action: "input->update-task#editmode", target: 'update.address'}, rows: 9 }  %>
-      <%= f.input :description, label: 'To do', input_html: { data: { action: "input->update-task#editmode", target: 'update.description'}, rows: 9 } %>
-      <%= link_to 'Delete', task_delete_path(@project, @task), data: { confirm: 'Are you sure you want to delete this task?' }, :method => :delete, class:"btn btn-delete" %>
-      <%= f.button :submit, "Save", data: { action: "click->update-task#edit", update_task_target:"button" }, class:"btn btn-save", style:"color:white" %>
-    <% end %>
-    <div data-target="update.display_description"></div>
+<% if current_user.team == "manager" %>
+  <div class="whitebck todo-box" >
+    <h1 class="todo-title">To Do's</h1>
+    <div class="adress_form" data-controller="update-task" data-project-id=<%=@project.id%> data-task-id=<%=@task.id%>>
+      <%= simple_form_for([@project, @task], remote: true, data: {target: "update-task.form", id: @task.id }) do |f| %>
+        <%= f.input :title, label: 'Title', input_html: { data: { action: "input->update-task#editmode", target: 'update.title'}, rows: 9 }, required: true  %>
+        <%= f.input :address, label: 'Address', input_html: { data: { action: "input->update-task#editmode", target: 'update.address'}, rows: 9 }  %>
+        <%= f.input :description, label: 'To do', input_html: { data: { action: "input->update-task#editmode", target: 'update.description'}, rows: 9 } %>
+        <%= link_to 'Delete', task_delete_path(@project, @task), data: { confirm: 'Are you sure you want to delete this task?' }, :method => :delete, class:"btn btn-delete" %>
+        <%= f.button :submit, "Save", data: { action: "click->update-task#edit", update_task_target:"button" }, class:"btn btn-save", style:"color:white" %>
+      <% end %>
+      <div data-target="update.display_description"></div>
+    </div>
   </div>
-</div>
+<% else %>
+  <div class="whitebck todo-box">
+    <h1><%= task.title %></h1>
+    <div class="adress_form">
+      <ul>
+        <li><%= task.address %></li>
+        <li><%= task.description %></li>
+      </ul>
+      <%= link_to 'Done', task_complete_path(@project, @task), class:"btn btn-delete" %>
+      <%= link_to "xD", project_tasks_path(@project) %>
+    </div>
+  </div>
+<% end %>

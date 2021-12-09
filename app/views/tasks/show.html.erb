@@ -1,0 +1,12 @@
+<div class="whitebck todo-box">
+    <h1><%= task.title %></h1>
+    <div class="adress_form">
+      <ul>
+        <li><%= task.address %></li>
+        <li><%= task.description %></li>
+      </ul>
+      <p>haha</p>
+      <%= link_to 'Done', task_complete_path(@project, @task), class:"btn btn-delete" %>
+      <%= link_to "xD", project_tasks_path(@project) %>
+    </div>
+  </div>

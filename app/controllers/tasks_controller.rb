@@ -21,7 +21,8 @@ class TasksController < ApplicationController
     @task.description
 
     respond_to do |format|
-      format.html { render partial: 'show.html', locals: { project: @project, task: @task } }
+      format.html { render 'show.html', locals: { project: @project, task: @task } }
+
       format.text { render partial: 'show.html', locals: { project: @project, task: @task } }
     end
   end
@@ -75,11 +76,15 @@ class TasksController < ApplicationController
     end
   end
 
-  def complete!
-    binding.pry
+  def complete
     @task = Task.find(params[:id])
-    @task.status = false
-    @task.save!
+    @task.status ? false : true
+    authorize @task
+    if @task.save!
+      redirect_to project_tasks_path(@project)
+    else
+      render :show
+    end
   end
 
   def update
