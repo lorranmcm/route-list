@@ -21,7 +21,7 @@ class TasksController < ApplicationController
     @task.description
 
     respond_to do |format|
-      format.html { render 'show.html', locals: { project: @project, task: @task } }
+      format.html { render partial: 'show.html', locals: { project: @project, task: @task } }
       format.text { render partial: 'show.html', locals: { project: @project, task: @task } }
     end
   end
