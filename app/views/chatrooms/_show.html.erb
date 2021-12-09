@@ -11,8 +11,10 @@
     <% end %>
   </div>
 
-  <%= simple_form_for [ @chatroom, @message ], remote: true do |f| %>
-    <%= f.input :content, label: false, placeholder: "Message" %>
-    <%= f.submit value:"Send", class:"btn-send"%>
-  <% end %>
+  <div class="d-flex">
+    <%= simple_form_for [ @chatroom, @message ], remote: true do |f| %>
+      <%= f.input :content, label: false, placeholder: "Message", class:"message-form" %>
+      <%= f.submit value:"Send", class:"btn-send"%>
+    <% end %>
+  </div>
 </div>
