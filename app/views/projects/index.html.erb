@@ -20,7 +20,7 @@
     <% @projects.each do |project|%>
         <div class="card-category-yellow" data-controller="project-card">
           <div data-project-card-target="view" class="js-project-view">
-            <h3 data-project-card-target="projectTitle"><%= link_to project.title, project_tasks_url(project) %></h3>
+            <h3 data-project-card-target="projectTitle"><%= link_to project.title, project_tasks_url(project), :class => "pt" %></h3>
             <div class="d-flex justify-content-between">
               <p><%= pluralize project.tasks.length, "task" %></p>
               <div class="links">
