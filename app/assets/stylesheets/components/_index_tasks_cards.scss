@@ -8,6 +8,37 @@
   border-radius: 12px;
 }
 
+.card-product-employee {
+  overflow: hidden;
+  height: 120px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+  border-radius: 12px;
+  background: #001D3D;
+}
+
+.card-product-employee h2 {
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
+  margin: 0;
+}
+
+.card-product-employee p {
+  color: white;
+  font-size: 12px;
+  line-height: 1.4;
+  opacity: .7;
+  margin-bottom: 0;
+  margin-top: 8px;
+}
+
+.card-product-employee .card-product-infos {
+  padding: 16px;
+}
+
 .bg-blue {
   background: #001D3D;
 }
