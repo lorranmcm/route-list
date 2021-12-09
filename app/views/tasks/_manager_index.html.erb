@@ -5,7 +5,7 @@
     <div class="col-sm-4 p-0">
       <div id="tasks">
         <% @project.tasks.each do |task| %>
-          <div class="card-product" data-action="click->index#opendescription click->chat#openchat" data-task-id=<%=task.id%> data-chat-id=<%=task.chatroom.id%>>
+          <div class="card-product <%= task.status ? 'bg-green' : 'bg-blue' %>" data-action="click->index#opendescription click->chat#openchat" data-task-id=<%=task.id%> data-chat-id=<%=task.chatroom.id%>>
             <div class="card-product-infos">
               <h2><%=task.title%></h2>
             </div>
