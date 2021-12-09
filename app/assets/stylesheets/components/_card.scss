@@ -8,10 +8,16 @@
   height: auto;
   top: 0px;
   background-color: #FFC300;
-  color: #001D3D;
   padding: 30px;
   border-radius: 10px;
+  .pt {
+    color: black;
+  }
 }
+
+//.js-project-view a {
+//  color: black;
+//}
 
 .js-project-edit {
   display: none;
@@ -32,15 +38,30 @@
 
 }
 
-.cards :hover {
+.card-category-yellow:hover {
   background-color: #001D3D;
   color: white;
   text-decoration: none;
+  .pt {
+    text-decoration: none;
+    color: white;
+  }
+  .fa-trash-alt {
+  color: white;
+  }
+  .links i {
+    display: inline-block;
+  }
+}
+
+.fa-trash-alt {
+  color: black;
 }
 
 .links i {
   padding-top: 30px;
   margin-left: 15px;
+  display: none;
 }
 
 .card-category {
