@@ -75,11 +75,15 @@ class TasksController < ApplicationController
     end
   end
 
-  def complete!
-    binding.pry
+  def mark_as_done
     @task = Task.find(params[:id])
-    @task.status = false
-    @task.save!
+    @task.status = @task.status ? false : true
+    authorize @task
+    if @task.save!
+      redirect_to project_tasks_path(@project)
+    else
+      render :show
+    end
   end
 
   def update

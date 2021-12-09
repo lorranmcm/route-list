@@ -27,39 +27,39 @@ employee = User.new(
 employee.save!
 puts "User Created"
 
-project_seed_one = Project.new(title: "Demo day")
-project_seed_one.user = user_seed
-project_seed_one.save!
+# project_seed_one = Project.new(title: "Demo day")
+# project_seed_one.user = user_seed
+# project_seed_one.save!
 
-puts "Created Projects"
+# puts "Created Projects"
 
-task_seed_one = Task.new(
-  title: "Get documents on Le Wagon",
-  description: "Milene is waiting for us to catch some documents to deliver in the Correios",
-  address: "R. Alm. Gonçalves, 5 - Copacabana, Rio de Janeiro"
-)
-task_seed_one.project = project_seed_one
-task_seed_one.save!
+# task_seed_one = Task.new(
+#   title: "Get documents on Le Wagon",
+#   description: "Milene is waiting for us to catch some documents to deliver in the Correios",
+#   address: "R. Alm. Gonçalves, 5 - Copacabana, Rio de Janeiro"
+# )
+# task_seed_one.project = project_seed_one
+# task_seed_one.save!
 
-task_seed_two = Task.new(
-  title: "Send the documents",
-  description: "We need to send this documents to Le Wagon SP, the address is written on the note Milene gave you.",
-  address: "Avenida Nossa Senhora de Copacabana, 540"
-)
-task_seed_two.project = project_seed_one
-task_seed_two.save!
+# task_seed_two = Task.new(
+#   title: "Send the documents",
+#   description: "We need to send this documents to Le Wagon SP, the address is written on the note Milene gave you.",
+#   address: "Avenida Nossa Senhora de Copacabana, 540"
+# )
+# task_seed_two.project = project_seed_one
+# task_seed_two.save!
 
-puts "Created Task"
+# puts "Created Task"
 
-chatroom_one = Chatroom.new
-chatroom_one.task = task_seed_one
-chatroom_one.save!
+# chatroom_one = Chatroom.new
+# chatroom_one.task = task_seed_one
+# chatroom_one.save!
 
-chatroom_two = Chatroom.new
-chatroom_two.task = task_seed_two
-chatroom_two.save!
+# chatroom_two = Chatroom.new
+# chatroom_two.task = task_seed_two
+# chatroom_two.save!
 
-assignment_one = Assignment.new
-assignment_one.task = task_seed_one
-assignment_one.user = employee
-assignment_one.save!
+# assignment_one = Assignment.new
+# assignment_one.task = task_seed_one
+# assignment_one.user = employee
+# assignment_one.save!

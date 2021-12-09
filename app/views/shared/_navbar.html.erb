@@ -13,12 +13,11 @@
 
     <div class="d-flex navbar-links <%= current_user && params[:action] != "home" ? "light-color" : "dark-color"%>">
       <%= "|" %>
-
       <% if params[:action] == "home"%>
         <%= link_to "How it works", root_path(anchor: "how-it-works") %>
 
-        <%= link_to "Users", users_path(anchor: "Users") %>
       <% end %>
+        <%= link_to "Users", users_path(anchor: "Users") %>
         <%= link_to "Projects", projects_path %>
     </div>
 
