@@ -29,7 +29,7 @@ class TaskPolicy < ApplicationPolicy
       true
     end
 
-    def complete?
+    def mark_as_done?
       true
     end
 end
