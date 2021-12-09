@@ -1,12 +1,19 @@
 .card-product {
   overflow: hidden;
   height: 120px;
-  background: #001D3D;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
   display: flex;
   align-items: center;
   margin-bottom: 20px;
   border-radius: 12px;
+}
+
+.bg-blue {
+  background: #001D3D;
+}
+
+.bg-green {
+  background: #2EC4B6;
 }
 
 .card-product img {
