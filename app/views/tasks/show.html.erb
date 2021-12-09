@@ -5,8 +5,7 @@
         <li><%= task.address %></li>
         <li><%= task.description %></li>
       </ul>
-      <p>haha</p>
-      <%= link_to 'Done', task_complete_path(@project, @task), class:"btn btn-delete" %>
+      <%= link_to 'Done', task_mark_as_done_path(@project, @task), class:"btn btn-success" %>
       <%= link_to "xD", project_tasks_path(@project) %>
     </div>
   </div>

@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   devise_for :users
   root to: 'pages#home'
   get '/projects' => "projects#index", :as => :user_root
-  get '/projects/:project_id/tasks/:id/completed', to: 'tasks#complete', as: :task_complete
+  get '/projects/:project_id/tasks/:id/mark_as_done', to: 'tasks#mark_as_done', as: :task_mark_as_done
   patch '/projects/:project_id/tasks/:id', to: 'tasks#update', as: :task_update
   get '/projects/:project_id/tasks/new', to: 'tasks#new', as: :task_form
   delete '/projects/:project_id/tasks/:id', to: 'tasks#destroy', as: :task_delete
