@@ -21,7 +21,7 @@ export default class extends Controller {
     })
     .then(response => response.text())
     .then((data) => {
-      this.buttonTarget.classList.replace("btn-warning", "btn-success");
+      this.buttonTarget.classList.replace("btn-warning", "btn-save");
       this.buttonTarget.value = "Saved!";
     })
   }
@@ -30,7 +30,7 @@ export default class extends Controller {
     console.log(this.formTarget)
     console.log(this.element.dataset.taskId)
     console.log(this.element.dataset)
-    this.buttonTarget.classList.replace("btn-success", "btn-warning");
+    this.buttonTarget.classList.replace("btn-save", "btn-warning");
     this.buttonTarget.value = "Save";
   }
 

@@ -7,7 +7,7 @@
         <%= f.input :address, label: 'Address', input_html: { data: { action: "input->update-task#editmode", target: 'update.address'}, rows: 9 }  %>
         <%= f.input :description, label: 'To do', input_html: { data: { action: "input->update-task#editmode", target: 'update.description'}, rows: 9 } %>
         <%= link_to 'Delete', task_delete_path(@project, @task), data: { confirm: 'Are you sure you want to delete this task?' }, :method => :delete, class:"btn btn-delete" %>
-        <%= f.button :submit, "Save", data: { action: "click->update-task#edit", update_task_target:"button" }, class:"btn btn-save", style:"color:white" %>
+        <%= f.button :submit, "Save", data: { action: "click->update-task#edit input->update-task#editmode", update_task_target:"button" }, class:"btn btn-save", style:"color:white" %>
       <% end %>
       <div data-target="update.display_description"></div>
     </div>
